@@ -1,5 +1,7 @@
 package castro.alberto.themovieapp.di
 
+import castro.alberto.themovieapp.data.datasource.local.MovieDetailsLocalDataSource
+import castro.alberto.themovieapp.data.datasource.local.PopularMoviesLocalDataSource
 import castro.alberto.themovieapp.data.datasource.remote.MovieDetailsRemoteDataSource
 import castro.alberto.themovieapp.data.datasource.remote.PopularMoviesRemoteDataSource
 import castro.alberto.themovieapp.data.repository.MovieDetailsRepository
@@ -16,15 +18,17 @@ import dagger.hilt.components.SingletonComponent
 object RepositoryModule {
     @Provides
     fun providesPopularMoviesRepository(
-        remoteDataSource: PopularMoviesRemoteDataSource
+        remoteDataSource: PopularMoviesRemoteDataSource,
+        localDataSource: PopularMoviesLocalDataSource
     ): PopularMoviesRepository {
-        return PopularMoviesRepositoryImpl(remoteDataSource)
+        return PopularMoviesRepositoryImpl(remoteDataSource, localDataSource)
     }
 
     @Provides
     fun providesMovieDetailsRepository(
-        remoteDataSource: MovieDetailsRemoteDataSource
+        remoteDataSource: MovieDetailsRemoteDataSource,
+        localDataSource: MovieDetailsLocalDataSource
     ): MovieDetailsRepository {
-        return MovieDetailsRepositoryImpl(remoteDataSource)
+        return MovieDetailsRepositoryImpl(remoteDataSource, localDataSource)
     }
 }
