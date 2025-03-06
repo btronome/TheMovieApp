@@ -1,4 +1,4 @@
-package castro.alberto.themovieapp.ui.theme
+package castro.alberto.themovieapp.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -9,3 +9,8 @@ val Pink80 = Color(0xFFEFB8C8)
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
+
+val ChineseBlack = Color(0xFF141414)
+val InvertedChineseBlack = Color(0xFFEBEBEB)
+val LightGray = Color(0xFFA8A8A8)
+val InvertedLightGray = Color(0xFF343534)

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TheMovieApp</string>
+    <string name="discover_more_movies">Discover more movies</string>
 </resources>
