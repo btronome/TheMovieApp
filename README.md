@@ -4,8 +4,8 @@ TheMovieApp is an Android application developed in Kotlin, allowing users to exp
 ## How to run
 1. Open Android Studio
 2. Clone the repository
-3. To access The Movie Database (TMDb) API, you must obtain an Access Token: Follow these steps [TMDB](https://developers.themoviedb.org/3/getting-started/introduction)
-4. Replace the following line in the `gradle.properties` file: `access_token`
+3. To access The Movie Database (TMDb) API, you must obtain an Api Key: Follow these steps [TMDB](https://developers.themoviedb.org/3/getting-started/introduction)
+4. Replace the following line in the `gradle.properties` file: `your_api_key`
 5. Sync the project in Android Studio, Clean & Rebuild project
 6. Start the emulator and click Run in Android Studio to install and launch the app.
 
@@ -28,7 +28,7 @@ The project follows Clean Architecture with MVVM, organizing code into well-stru
 
 `MoviesDataBase`, `PopularMoviesDao` and `MovieDetailsDao` these are used for the offline operation of the app. They have methods to save/get data from a database.
 
-`MovieApi` and `AuthInterceptor` these are used for the operation of the online app. They consume data from the API.
+`MovieApi` and `ApiInterceptor` these are used for the operation of the online app. They consume data from the API.
 
 `*Mapper` and `*Converter` these facilitate the transformation of data between layers, from data to domain for use in presentation, and from domain to data for local persistence.
 

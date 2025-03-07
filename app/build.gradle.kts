@@ -28,12 +28,12 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "ACCESS_TOKEN", "\"${project.properties["ACCESS_TOKEN"]}\"")
+            buildConfigField("String", "API_KEY", "\"${project.properties["API_KEY"]}\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "MOVIE_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\"")
         }
         debug {
-            buildConfigField("String", "ACCESS_TOKEN", "\"${project.properties["ACCESS_TOKEN"]}\"")
+            buildConfigField("String", "API_KEY", "\"${project.properties["API_KEY"]}\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "MOVIE_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\"")
         }

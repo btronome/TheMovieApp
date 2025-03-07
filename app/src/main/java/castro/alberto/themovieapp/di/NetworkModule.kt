@@ -2,7 +2,7 @@ package castro.alberto.themovieapp.di
 
 import castro.alberto.themovieapp.BuildConfig
 import castro.alberto.themovieapp.data.api.MovieApi
-import castro.alberto.themovieapp.data.network.AuthInterceptor
+import castro.alberto.themovieapp.data.network.ApiInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,15 +20,15 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesAuthInterceptor(): AuthInterceptor {
-        return AuthInterceptor()
+    fun providesApiInterceptor(): ApiInterceptor {
+        return ApiInterceptor()
     }
 
     @Provides
     @Singleton
-    fun providesHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
+    fun providesHttpClient(apiInterceptor: ApiInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(authInterceptor)
+            .addInterceptor(apiInterceptor)
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
             .build()
