@@ -7,11 +7,11 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val DarkColorScheme = darkColorScheme(
-    primary = InvertedChineseBlack,
-    onPrimary = ChineseBlack,
+    primary = ChineseBlack,
+    onPrimary = InvertedChineseBlack,
     secondary = PurpleGrey80,
     tertiary = Pink80,
-    surface = LightGray
+    surface = InvertedLightGray
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -45,7 +45,7 @@ fun TheMovieAppTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = DarkColorScheme,
         typography = Typography,
         content = content
     )
