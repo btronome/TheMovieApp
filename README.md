@@ -1,10 +1,6 @@
 # The Movie App
 TheMovieApp is an Android application developed in Kotlin, allowing users to explore movie information via [The Movie Database](https://developers.themoviedb.org/3) API.
 
-Main Screen | Detail Screen 
-:-: | :-: 
-![MainScreen.png](../../Desktop/MainScreen.png) | ![DetailScreen.png](../../Desktop/DetailScreen.png)
-
 ## How to run
 1. Open Android Studio
 2. Clone the repository
@@ -25,8 +21,6 @@ Main Screen | Detail Screen
 
 ## Architecture
 The project follows Clean Architecture with MVVM, organizing code into well-structured layers:
-
-![architecture.png](../../Desktop/architecture.png)
 
 ### Data Layer
   * Handles data access logic
