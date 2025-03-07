@@ -18,12 +18,14 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -58,7 +60,8 @@ fun PopularMoviesScreen(
 ) {
     onTitleChanged(stringResource(R.string.app_name))
     val state by viewModel.uiState.collectAsState()
-    val movies by viewModel.movies.collectAsState()
+    val movies by viewModel.displayedMovies.collectAsState()
+    val searchQuery by viewModel.searchQuery.collectAsState()
     var showMoreMoviesButton by remember { mutableStateOf(false) }
 
     Box(
@@ -75,15 +78,22 @@ fun PopularMoviesScreen(
             is UiState.Success -> {
                 val data = (state as UiState.Success).data.results
                 viewModel.handlePaging(data)
-                MoviesList(
-                    movies = movies,
-                    onMovieClicked = { movieId ->
-                        onMovieClicked(movieId)
-                    },
-                    showMoreMoviesButton = {
-                        showMoreMoviesButton = it
-                    }
-                )
+                Column {
+                    SearchBar(
+                        query = searchQuery,
+                        onQueryChanged = { viewModel.updateSearchQuery(it) }
+                    )
+
+                    MoviesList(
+                        movies = movies,
+                        onMovieClicked = { movieId ->
+                            onMovieClicked(movieId)
+                        },
+                        showMoreMoviesButton = {
+                            showMoreMoviesButton = it
+                        }
+                    )
+                }
             }
 
             is UiState.Error -> {
@@ -93,7 +103,7 @@ fun PopularMoviesScreen(
             }
         }
 
-        if (showMoreMoviesButton) {
+        if (showMoreMoviesButton && searchQuery.isBlank()) {
             ExtendedFloatingActionButton(
                 onClick = { viewModel.fetchPopularMovies() },
                 modifier = Modifier
@@ -189,6 +199,25 @@ private fun MoviesList(
             }
         }
     }
+}
+
+@Composable
+private fun SearchBar(query: String, onQueryChanged: (String) -> Unit) {
+    TextField(
+        value = query,
+        onValueChange = onQueryChanged,
+        placeholder = { Text(text = stringResource(R.string.search_movie)) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(dimensionResource(R.dimen.dim_12)),
+        singleLine = true,
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = stringResource(R.string.search_movie)
+            )
+        }
+    )
 }
 
 private const val pageSize = 20
