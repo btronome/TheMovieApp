@@ -39,7 +39,7 @@ The project follows Clean Architecture with MVVM, organizing code into well-stru
 
 `GetPopularMoviesUseCase`, `GetMovieDetailsUseCase`, `PopularMovies` and `MovieDetails` these contain the data that is transmitted to the presentation layer to display in the UI.
 
-###  Presentation Layer 
+### Presentation Layer 
   * Implements ViewModels and Jetpack Compose for UI.
 
 `PopularMoviesScreen` and `MovieDetailsScreen` these contain the views that the user sees and handle user interactions.
@@ -48,12 +48,12 @@ The project follows Clean Architecture with MVVM, organizing code into well-stru
 
 `MainNavGraph` and `Route` these contain the definition of the graph for navigation within the application and the routes to follow.
 
-* DI (Dependency Injection) Layer
+### DI (Dependency Injection) Layer
   * Uses Hilt for dependency injection, improving modularization.
 
 `NetworkModule`, `DataBaseModule`, `DataSourceModule`, `RepositoryModule` and `UseCaseModule` these contain the declaration of the singletons and provides dependency injection with Hilt
 
-* Core Layer
+### Core Layer
   * Contains shared common code across modules.
 
 `App` enables Hilt code generation, including a base class for your application that serves as an application-level dependency container.
