@@ -32,12 +32,12 @@ The project follows Clean Architecture with MVVM, organizing code into well-stru
 
 `*Mapper` and `*Converter` these facilitate the transformation of data between layers, from data to domain for use in presentation, and from domain to data for local persistence.
 
-`PopularMoviesRemoteDataSource`,`PopularMoviesLocalDataSource`, `MovieDetailsRemoteDataSource`, `MovieDetailsLocalDataSource`, `PopularMoviesRepository` and `MovieDetailsRepository` these are use for managing the consume of the API and the Database as needed.
+`PopularMoviesRemoteDataSource`, `PopularMoviesLocalDataSource`, `MovieDetailsRemoteDataSource`, `MovieDetailsLocalDataSource`, `PopularMoviesRepository` and `MovieDetailsRepository` these are use for managing the consume of the API and the Database as needed.
 
 ### Domain Layer 
   * Defines Use Cases to manage business logic.
 
-`GetPopularMoviesUseCase`,`GetMovieDetailsUseCase`, `PopularMovies` and `MovieDetails` these contain the data that is transmitted to the presentation layer to display in the UI.
+`GetPopularMoviesUseCase`, `GetMovieDetailsUseCase`, `PopularMovies` and `MovieDetails` these contain the data that is transmitted to the presentation layer to display in the UI.
 
 ###  Presentation Layer 
   * Implements ViewModels and Jetpack Compose for UI.
@@ -51,7 +51,7 @@ The project follows Clean Architecture with MVVM, organizing code into well-stru
 * DI (Dependency Injection) Layer
   * Uses Hilt for dependency injection, improving modularization.
 
-`NetworkModule`,`DataBaseModule`, `DataSourceModule`, `RepositoryModule` and `UseCaseModule` these contain the declaration of the singletons and provides dependency injection with Hilt
+`NetworkModule`, `DataBaseModule`, `DataSourceModule`, `RepositoryModule` and `UseCaseModule` these contain the declaration of the singletons and provides dependency injection with Hilt
 
 * Core Layer
   * Contains shared common code across modules.
